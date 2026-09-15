@@ -6,10 +6,11 @@
          <div>
             <div class="flex items-center gap-2">
                <h1 class="text-xl sm:text-2xl font-bold tracking-tight">Painel Acadêmico</h1>
-               <span class="badge badge-outline badge-sm font-semibold">Ano 2025</span>
+               <span class="badge badge-outline badge-sm font-semibold">{{ now()->year }}
+               </span>
             </div>
             <p class="text-xs sm:text-sm opacity-70 mt-1">
-               Quarta-feira, 15 de Outubro de 2025 • Turno Matutino
+               {{ now()->translatedFormat('l') }}• Turno Matutino
             </p>
          </div>
 
@@ -77,7 +78,7 @@
                </div>
                <div class="stat-title text-xs font-semibold uppercase tracking-wider opacity-60">Turmas Ativas
                </div>
-               <div class="stat-value text-2xl font-bold mt-0.5">contar turmas</div>
+               <div class="stat-value text-2xl font-bold mt-0.5">{{ $turma->count() }}</div>
                <div class="stat-desc opacity-70 mt-0.5">Em 2 turnos letivos</div>
             </div>
          </div>
@@ -136,123 +137,50 @@
                            <th class="text-right">Ação</th>
                         </tr>
                      </thead>
-                     <tbody class="text-xs">
-                        <tr class="hover:bg-base-200/50">
-                           <td>
-                              <div class="flex items-center gap-3">
-                                 <div class="avatar">
-                                    <div class="w-8 h-8 rounded-full">
-                                       <img
-                                          src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&auto=format&fit=crop&q=80"
-                                          alt="Lucas Silveira" />
+                     @forelse ($matriculas as $matricula)
+                        <tbody class="text-xs">
+                           <tr class="hover:bg-base-200/50">
+                              <td>
+                                 <div class="flex items-center gap-3">
+                                    <div class="avatar">
+                                       <div class="w-8 h-8 rounded-full">
+                                          <img
+                                             src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&auto=format&fit=crop&q=80"
+                                             alt="Lucas Silveira" />
+                                       </div>
+                                    </div>
+                                    <div>
+                                       <p class="font-semibold text-base-content">{{ $matricula->nome }}</p>
+                                       <span
+                                          class="text-[10px] opacity-60 font-mono">{{$matricula->matricula->matricula ?? "N/A" }}</span>
                                     </div>
                                  </div>
-                                 <div>
-                                    <p class="font-semibold text-base-content">Lucas Silveira Mendes</p>
-                                    <span class="text-[10px] opacity-60 font-mono">RA: #2025-0842</span>
-                                 </div>
-                              </div>
-                           </td>
-                           <td>
-                              <span class="font-medium">9º Ano A</span>
-                              <div class="text-[10px] opacity-60">Fundamental</div>
-                           </td>
-                           <td>15/10/2025</td>
-                           <td>
-                              <span class="badge badge-success badge-sm badge-soft gap-1 text-[11px]">
-                                 Ativo
-                              </span>
-                           </td>
-                           <td class="text-right">
-                              <button class="btn btn-ghost btn-xs btn-square" title="Ver detalhes">
-                                 <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round"
-                                       stroke-linejoin="round" stroke-width="2" />
-                                    <path
-                                       d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                                       stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-                                 </svg>
-                              </button>
-                           </td>
-                        </tr>
-
-                        <tr class="hover:bg-base-200/50">
-                           <td>
-                              <div class="flex items-center gap-3">
-                                 <div class="avatar">
-                                    <div class="w-8 h-8 rounded-full">
-                                       <img
-                                          src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&auto=format&fit=crop&q=80"
-                                          alt="Beatriz Souza" />
-                                    </div>
-                                 </div>
-                                 <div>
-                                    <p class="font-semibold text-base-content">Beatriz Souza Lima</p>
-                                    <span class="text-[10px] opacity-60 font-mono">RA: #2025-0841</span>
-                                 </div>
-                              </div>
-                           </td>
-                           <td>
-                              <span class="font-medium">2º Ano B</span>
-                              <div class="text-[10px] opacity-60">Médio</div>
-                           </td>
-                           <td>14/10/2025</td>
-                           <td>
-                              <span class="badge badge-success badge-sm badge-soft gap-1 text-[11px]">
-                                 Ativo
-                              </span>
-                           </td>
-                           <td class="text-right">
-                              <button class="btn btn-ghost btn-xs btn-square" title="Ver detalhes">
-                                 <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round"
-                                       stroke-linejoin="round" stroke-width="2" />
-                                    <path
-                                       d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                                       stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-                                 </svg>
-                              </button>
-                           </td>
-                        </tr>
-
-                        <tr class="hover:bg-base-200/50">
-                           <td>
-                              <div class="flex items-center gap-3">
-                                 <div class="avatar">
-                                    <div class="w-8 h-8 rounded-full">
-                                       <img
-                                          src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=100&auto=format&fit=crop&q=80"
-                                          alt="Gabriel Antunes" />
-                                    </div>
-                                 </div>
-                                 <div>
-                                    <p class="font-semibold text-base-content">Gabriel Antunes Neto</p>
-                                    <span class="text-[10px] opacity-60 font-mono">RA: #2025-0839</span>
-                                 </div>
-                              </div>
-                           </td>
-                           <td>
-                              <span class="font-medium">6º Ano C</span>
-                              <div class="text-[10px] opacity-60">Fundamental</div>
-                           </td>
-                           <td>14/10/2025</td>
-                           <td>
-                              <span class="badge badge-warning badge-sm badge-soft gap-1 text-[11px]">
-                                 Doc. Pendente
-                              </span>
-                           </td>
-                           <td class="text-right">
-                              <button class="btn btn-ghost btn-xs btn-square" title="Ver detalhes">
-                                 <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round"
-                                       stroke-linejoin="round" stroke-width="2" />
-                                    <path
-                                       d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                                       stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-                                 </svg>
-                              </button>
-                           </td>
-                        </tr>
+                              </td>
+                              <td>
+                                 <span class="font-medium">9º Ano A</span>
+                                 <div class="text-[10px] opacity-60">Fundamental</div>
+                              </td>
+                              <td>15/10/2025</td>
+                              <td>
+                                 <span class="badge badge-success badge-sm badge-soft gap-1 text-[11px]">
+                                    Ativo
+                                 </span>
+                              </td>
+                              <td class="text-right">
+                                 <button class="btn btn-ghost btn-xs btn-square" title="Ver detalhes">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                       <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round"
+                                          stroke-linejoin="round" stroke-width="2" />
+                                       <path
+                                          d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                                          stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+                                    </svg>
+                                 </button>
+                              </td>
+                           </tr>
+                     @empty
+                           <p>não há matriculas</p>
+                        @endforelse
                      </tbody>
                   </table>
                </div>

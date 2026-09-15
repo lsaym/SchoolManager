@@ -123,7 +123,7 @@
             <div class="space-y-4">
                <!-- Logo -->
                <div class="flex items-center gap-3 px-2 py-1">
-                  <img class="h-10 w-10 object-contain" src="/images/esjd.png" alt="Logo">
+                  <img class="h-20 w-20 object-contain" src="/images/esjd.png" alt="Logo">
                   <div>
                      @foreach ($escolas as $escola)
                         <div class="font-bold text-sm leading-tight">{{ $escola->nome_fantasia ?? "Escola" }}</div>
@@ -198,6 +198,22 @@
             </div>
 
             <!-- Footer Sidebar -->
+            <div class="p-3 bg-base-200/50 rounded-box border border-base-300">
+               <p>Tema do sistema</p>
+               <label class="flex cursor-pointer gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <circle cx="12" cy="12" r="5" />
+                     <path
+                        d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+                  </svg>
+                  <input type="checkbox" value="synthwave" class="toggle theme-controller" />
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                  </svg>
+               </label>
+            </div>
             <div class="p-3 bg-base-200/50 rounded-box border border-base-300">
                <div class="flex items-center gap-2 mb-0.5">
                   <span class="w-2 h-2 rounded-full bg-success"></span>

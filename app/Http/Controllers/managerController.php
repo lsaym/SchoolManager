@@ -13,10 +13,13 @@ class managerController extends Controller
     ) {}
     public function painelAcademico()
     {
-        $dadosAlunosEscola = $this->getDataService->getDataEscola();
+        $dadosAlunosEscola = $this->getDataService->getDataAluno();
         $alunos = $dadosAlunosEscola->get();
+        $matriculas = $dadosAlunosEscola->paginate(10);
+        $dadosTurmaEscola = $this->getDataService->getDataTurma();
+        $turma = $dadosTurmaEscola->get();
         $escolas = EscolaModel::all();
-        return view('painelAcademico', compact('escolas', 'alunos'));
+        return view('painelAcademico', compact('escolas', 'alunos', 'turma', 'matriculas',));
     }
 
     public function index()
